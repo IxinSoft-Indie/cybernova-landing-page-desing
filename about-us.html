@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybernova Protect | Blindaje Digital Moderno</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-300 antialiased">
+
+    <nav x-data="{ mobileMenu: false, scrolled: false }" 
+         @scroll.window="scrolled = (window.pageYOffset > 20) ? true : false"
+         :class="scrolled ? 'glass border-b border-slate-800' : 'bg-transparent'"
+         class="fixed w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <span class="text-white font-bold text-xl">C</span>
+                </div>
+                <span class="text-white font-bold text-xl tracking-tight">CYBERNOVA</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="index.html" class="hover:text-blue-400 transition-colors">Inicio</a>
+                <a href="our-services.html" class="hover:text-blue-400 transition-colors">Servicios</a>
+                <a href="about-us.html" class="hover:text-blue-400 transition-colors">Nosotros</a>
+                <a href="faq.html" class="hover:text-blue-400 transition-colors">FAQ</a>
+                <a href="contact-us.html" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-full transition-all">Contacto</a>
+            </div>
+
+            <button @click="mobileMenu = !mobileMenu" class="md:hidden text-white">
+                <svg x-show="!mobileMenu" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <svg x-show="mobileMenu" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        
+        <div x-show="mobileMenu" x-cloak class="md:hidden glass border-b border-slate-800 px-6 py-4 space-y-4">
+            <a href="index.html" class="block hover:text-blue-400">Inicio</a>
+            <a href="our-services.html" class="block hover:text-blue-400">Servicios</a>
+            <a href="about-us.html" class="block hover:text-blue-400">Nosotros</a>
+            <a href="faq.html" class="block hover:text-blue-400">FAQ</a>
+            <a href="contact-us.html" class="block hover:text-blue-400">Contacto</a>
+        </div>
+    </nav>
+
+   <section class="pt-32 pb-20 bg-slate-950">
+    <div class="container mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-8 tracking-tight">
+            Nuestra misión es <br> <span class="text-blue-500 italic">tu tranquilidad.</span>
+        </h1>
+        <p class="max-w-3xl mx-auto text-slate-400 text-lg md:text-xl leading-relaxed">
+            Fundada en la intersección de la ética y la tecnología, Cybernova Protect nació para democratizar la ciberseguridad de élite, permitiendo que empresas de todos los tamaños operen en un entorno digital hostil sin miedo.
+        </p>
+    </div>
+</section>
+
+<section class="py-16 bg-slate-950" x-data="{ 
+    counters: { attacks: 0, uptime: 0, response: 0 },
+    startCounter() {
+        setInterval(() => { if(this.counters.attacks < 1240) this.counters.attacks += 13 }, 50);
+        setInterval(() => { if(this.counters.uptime < 99) this.counters.uptime += 1 }, 30);
+    }
+}" x-init="startCounter()">
+    <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center p-8 glass rounded-3xl border border-slate-800">
+            <div class="text-3xl md:text-4xl font-black text-white mb-2" x-text="'+' + counters.attacks">0</div>
+            <div class="text-xs font-bold text-blue-500 uppercase tracking-widest">Ataques Bloqueados</div>
+        </div>
+        <div class="text-center p-8 glass rounded-3xl border border-slate-800">
+            <div class="text-3xl md:text-4xl font-black text-white mb-2" x-text="counters.uptime + '%'">0</div>
+            <div class="text-xs font-bold text-blue-500 uppercase tracking-widest">Uptime Garantizado</div>
+        </div>
+        <div class="text-center p-8 glass rounded-3xl border border-slate-800">
+            <div class="text-3xl md:text-4xl font-black text-white mb-2">15m</div>
+            <div class="text-xs font-bold text-blue-500 uppercase tracking-widest">Respuesta Media</div>
+        </div>
+        <div class="text-center p-8 glass rounded-3xl border border-slate-800">
+            <div class="text-3xl md:text-4xl font-black text-white mb-2">24/7</div>
+            <div class="text-xs font-bold text-blue-500 uppercase tracking-widest">Vigilancia Activa</div>
+        </div>
+    </div>
+</section>
+
+    <section class="py-24 bg-slate-950">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center md:text-left">Lo que nos define</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="p-10 bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-[2.5rem] hover:border-blue-500/40 transition-all group">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center text-blue-500 mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Integridad Radical</h3>
+                    <p class="text-slate-400 leading-relaxed">Operamos con total transparencia. Tus datos son sagrados y nuestra ética es innegociable.</p>
+                </div>
+
+                <div class="p-10 bg-blue-600 rounded-[2.5rem] shadow-[0_20px_50px_rgba(37,99,235,0.2)]">
+                    <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-white mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Innovación Defensiva</h3>
+                    <p class="text-blue-100 leading-relaxed">No seguimos las tendencias de seguridad; las creamos utilizando IA de última generación.</p>
+                </div>
+
+                <div class="p-10 bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-[2.5rem] hover:border-blue-500/40 transition-all group">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center text-blue-500 mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Enfoque Humano</h3>
+                    <p class="text-slate-400 leading-relaxed">Detrás de cada línea de código hay personas. Nuestro soporte es real, experto y siempre disponible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-slate-900">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-slate-500 text-sm">© 2025 Cybernova Protect. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

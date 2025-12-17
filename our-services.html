@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybernova Protect | Blindaje Digital Moderno</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-300 antialiased">
+
+    <nav x-data="{ mobileMenu: false, scrolled: false }" 
+         @scroll.window="scrolled = (window.pageYOffset > 20) ? true : false"
+         :class="scrolled ? 'glass border-b border-slate-800' : 'bg-transparent'"
+         class="fixed w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <span class="text-white font-bold text-xl">C</span>
+                </div>
+                <span class="text-white font-bold text-xl tracking-tight">CYBERNOVA</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="index.html" class="hover:text-blue-400 transition-colors">Inicio</a>
+                <a href="our-services.html" class="hover:text-blue-400 transition-colors">Servicios</a>
+                <a href="about-us.html" class="hover:text-blue-400 transition-colors">Nosotros</a>
+                <a href="faq.html" class="hover:text-blue-400 transition-colors">FAQ</a>
+                <a href="contact-us.html" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-full transition-all">Contacto</a>
+            </div>
+
+            <button @click="mobileMenu = !mobileMenu" class="md:hidden text-white">
+                <svg x-show="!mobileMenu" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <svg x-show="mobileMenu" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        
+        <div x-show="mobileMenu" x-cloak class="md:hidden glass border-b border-slate-800 px-6 py-4 space-y-4">
+            <a href="index.html" class="block hover:text-blue-400">Inicio</a>
+            <a href="our-services.html" class="block hover:text-blue-400">Servicios</a>
+            <a href="about-us.html" class="block hover:text-blue-400">Nosotros</a>
+            <a href="faq.html" class="block hover:text-blue-400">FAQ</a>
+            <a href="contact-us.html" class="block hover:text-blue-400">Contacto</a>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-20 bg-slate-950 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="md:flex items-center gap-12">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">
+                        Defensa Cibernética <br> <span class="text-blue-500">Inteligente y Proactiva</span>
+                    </h1>
+                    <p class="text-slate-400 text-lg leading-relaxed max-w-xl">
+                        Nuestras soluciones están diseñadas para proteger tu infraestructura digital de la evolución constante de las amenazas, garantizando la continuidad de tu negocio y la confidencialidad de tus datos.
+                    </p>
+                    <a href="/contact" class="mt-8 inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-2xl transition-all shadow-lg shadow-blue-600/20">
+                        Hablar con un Experto
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+                <div class="md:w-1/2 flex justify-center relative">
+                    <div class="absolute w-72 h-72 bg-blue-600/10 blur-[120px] rounded-full animate-pulse-slow"></div>
+                    <img src="https://via.placeholder.com/600x400/0f172a/60a5fa?text=Mapa+de+Red+Segura" alt="Mapa de Red Segura" class="relative z-10 rounded-3xl border border-slate-800 shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-950">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Nuestras Soluciones Clave</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Descubre cómo transformamos la complejidad de la ciberseguridad en protección tangible.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="group p-8 glass rounded-[2.5rem] border border-slate-800 hover:border-blue-500/50 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-blue-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Pentesting (Test de Intrusión)</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Simulamos ciberataques reales para identificar y explotar vulnerabilidades en tus sistemas, aplicaciones y redes antes de que lo hagan los atacantes maliciosos.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-blue-400 font-semibold hover:text-blue-300 group-hover:underline transition-colors">
+                        Saber más
+                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+
+                <div class="group p-8 glass rounded-[2.5rem] border border-slate-800 hover:border-blue-500/50 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-blue-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Auditoría y Compliance</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Aseguramos que tu empresa cumpla con las regulaciones de seguridad más exigentes (GDPR, ISO 27001, PCI-DSS), minimizando riesgos legales y de reputación.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-blue-400 font-semibold hover:text-blue-300 group-hover:underline transition-colors">
+                        Saber más
+                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+
+                <div class="group p-8 glass rounded-[2.5rem] border border-slate-800 hover:border-blue-500/50 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-blue-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Respuesta a Incidentes (IR)</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Nuestro equipo experto está disponible 24/7 para contener, investigar y mitigar rápidamente cualquier brecha de seguridad, minimizando el impacto en tu negocio.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-blue-400 font-semibold hover:text-blue-300 group-hover:underline transition-colors">
+                        Saber más
+                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+
+                <div class="group p-8 glass rounded-[2.5rem] border border-slate-800 hover:border-blue-500/50 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-blue-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">SOC as a Service</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Un Centro de Operaciones de Seguridad (SOC) 24/7 monitorea y gestiona tus alertas de seguridad, proporcionando una capa de protección constante sin la necesidad de un equipo interno.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-blue-400 font-semibold hover:text-blue-300 group-hover:underline transition-colors">
+                        Saber más
+                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+
+                <div class="group p-8 glass rounded-[2.5rem] border border-slate-800 hover:border-blue-500/50 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-blue-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-1.25-3M15 10V5a3 3 0 00-3-3m0 0a3 3 0 00-3 3v5M12 12V8m0 4h.01M12 12v4m-4 0h8m-4 0a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Protección de Endpoint</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Aseguramos todos los dispositivos (ordenadores, móviles, servidores) que se conectan a tu red, previniendo infecciones de malware y accesos no autorizados.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-blue-400 font-semibold hover:text-blue-300 group-hover:underline transition-colors">
+                        Saber más
+                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+
+                <div class="group p-8 glass rounded-[2.5rem] border border-slate-800 hover:border-blue-500/50 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-blue-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253m9 0c1.168-.776 2.754-1.253 4.5-1.253 1.746 0 3.332.477 4.5 1.253m-9 0H3M12 16.253h8.25M12 16.253C10.832 17.027 9.246 17.5 7.5 17.5S4.168 17.027 3 16.253m9 0H3"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Formación en Conciencia</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Capacitamos a tu equipo con las mejores prácticas de ciberseguridad, convirtiendo a tus empleados en tu primera línea de defensa contra ataques de ingeniería social y phishing.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-blue-400 font-semibold hover:text-blue-300 group-hover:underline transition-colors">
+                        Saber más
+                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-slate-900">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-slate-500 text-sm">© 2025 Cybernova Protect. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
