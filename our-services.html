@@ -16,7 +16,7 @@
 </head>
 <body class="bg-slate-950 text-slate-300 antialiased">
 
-        <nav x-data="{ mobileMenu: false, scrolled: false, langOpen: false, currentLang: 'ES' }" 
+    <nav x-data="{ mobileMenu: false, scrolled: false, langOpen: false, currentLang: 'ES' }" 
         @scroll.window="scrolled = (window.pageYOffset > 20) ? true : false"
         :class="scrolled ? 'glass border-b border-slate-800' : 'bg-transparent'"
         class="fixed w-full z-50 transition-all duration-300 text-white">
@@ -32,6 +32,7 @@
             <div class="hidden md:flex items-center gap-8 text-sm font-medium">
                 <a href="index.html" class="hover:text-blue-400 transition-colors">Inicio</a>
                 <a href="our-services.html" class="hover:text-blue-400 transition-colors">Servicios</a>
+                <a href="plans.html" class="hover:text-blue-400 transition-colors">Planes</a>
                 <a href="about-us.html" class="hover:text-blue-400 transition-colors">Nosotros</a>
                 <a href="faq.html" class="hover:text-blue-400 transition-colors">FAQ</a>
 
@@ -74,6 +75,7 @@
         <div x-show="mobileMenu" x-cloak x-transition class="md:hidden glass border-b border-slate-800 px-6 py-6 space-y-4">
             <a href="index.html" class="block hover:text-blue-400">Inicio</a>
             <a href="our-services.html" class="block hover:text-blue-400">Servicios</a>
+            <a href="plans.html" class="block hover:text-blue-400">Planes</a>
             <a href="about-us.html" class="block hover:text-blue-400">Nosotros</a>
             <a href="faq.html" class="block hover:text-blue-400">FAQ</a>
             
