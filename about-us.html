@@ -16,13 +16,14 @@
 </head>
 <body class="bg-slate-950 text-slate-300 antialiased">
 
-    <nav x-data="{ mobileMenu: false, scrolled: false }" 
-         @scroll.window="scrolled = (window.pageYOffset > 20) ? true : false"
-         :class="scrolled ? 'glass border-b border-slate-800' : 'bg-transparent'"
-         class="fixed w-full z-50 transition-all duration-300">
+        <nav x-data="{ mobileMenu: false, scrolled: false, langOpen: false, currentLang: 'ES' }" 
+        @scroll.window="scrolled = (window.pageYOffset > 20) ? true : false"
+        :class="scrolled ? 'glass border-b border-slate-800' : 'bg-transparent'"
+        class="fixed w-full z-50 transition-all duration-300 text-white">
+        
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(37,99,235,0.3)]">
                     <span class="text-white font-bold text-xl">C</span>
                 </div>
                 <span class="text-white font-bold text-xl tracking-tight">CYBERNOVA</span>
@@ -33,21 +34,60 @@
                 <a href="our-services.html" class="hover:text-blue-400 transition-colors">Servicios</a>
                 <a href="about-us.html" class="hover:text-blue-400 transition-colors">Nosotros</a>
                 <a href="faq.html" class="hover:text-blue-400 transition-colors">FAQ</a>
-                <a href="contact-us.html" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-full transition-all">Contacto</a>
+
+                <div class="h-4 w-[1px] bg-slate-800"></div>
+
+                <div class="relative">
+                    <button @click="langOpen = !langOpen" @click.away="langOpen = false"
+                            class="flex items-center gap-2 px-2 py-1 rounded-lg hover:bg-slate-800 transition-all">
+                        <template x-if="currentLang === 'ES'">
+                            <svg class="w-4 h-3 rounded-sm" viewBox="0 0 750 500"><path fill="#c60b1e" d="M0 0h750v500H0z"/><path fill="#ffc400" d="M0 125h750v250H0z"/><path fill="#c60b1e" d="M0 0h750v125H0zm0 375h750v125H0z"/></svg>
+                        </template>
+                        <template x-if="currentLang === 'EN'">
+                            <svg class="w-4 h-3 rounded-sm" viewBox="0 0 60 30"><path d="M0 0v30h60V0z" fill="#012169"/><path d="m0 0 60 30L0 30" stroke="#fff" stroke-width="6"/><path d="M15 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M15 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></svg>
+                        </template>
+                        <span class="uppercase text-[11px] font-bold" x-text="currentLang"></span>
+                        <svg class="w-3 h-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+
+                    <div x-show="langOpen" x-cloak x-transition
+                        class="absolute right-0 mt-2 w-32 glass border border-slate-800 rounded-xl shadow-2xl py-2 overflow-hidden">
+                        <button @click="currentLang = 'ES'; langOpen = false" class="w-full flex items-center gap-3 px-4 py-2 hover:bg-blue-600/20 text-xs transition-colors text-left">Español</button>
+                        <button @click="currentLang = 'EN'; langOpen = false" class="w-full flex items-center gap-3 px-4 py-2 hover:bg-blue-600/20 text-xs transition-colors text-left">English</button>
+                    </div>
+                </div>
+
+                <a href="login.html" class="flex items-center gap-2 text-slate-300 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
+                    <span>Login</span>
+                </a>
+
+                <a href="contact-us.html" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-full transition-all shadow-lg shadow-blue-600/20 active:scale-95">Contacto</a>
             </div>
 
-            <button @click="mobileMenu = !mobileMenu" class="md:hidden text-white">
+            <button @click="mobileMenu = !mobileMenu" class="md:hidden text-white p-1">
                 <svg x-show="!mobileMenu" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 <svg x-show="mobileMenu" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
         </div>
         
-        <div x-show="mobileMenu" x-cloak class="md:hidden glass border-b border-slate-800 px-6 py-4 space-y-4">
+        <div x-show="mobileMenu" x-cloak x-transition class="md:hidden glass border-b border-slate-800 px-6 py-6 space-y-4">
             <a href="index.html" class="block hover:text-blue-400">Inicio</a>
             <a href="our-services.html" class="block hover:text-blue-400">Servicios</a>
             <a href="about-us.html" class="block hover:text-blue-400">Nosotros</a>
             <a href="faq.html" class="block hover:text-blue-400">FAQ</a>
-            <a href="contact-us.html" class="block hover:text-blue-400">Contacto</a>
+            
+            <div class="pt-4 border-t border-slate-800 space-y-4">
+                <a href="login.html" class="flex items-center gap-2 text-blue-400 font-bold">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
+                    Login
+                </a>
+                <div class="flex gap-4">
+                    <button @click="currentLang = 'ES'" :class="currentLang === 'ES' ? 'text-white' : 'text-slate-500'" class="text-xs font-bold uppercase">ES</button>
+                    <button @click="currentLang = 'EN'" :class="currentLang === 'EN' ? 'text-white' : 'text-slate-500'" class="text-xs font-bold uppercase">EN</button>
+                </div>
+                <a href="contact-us.html" class="block w-full text-center py-3 bg-blue-600 text-white rounded-xl">Contacto</a>
+            </div>
         </div>
     </nav>
 
